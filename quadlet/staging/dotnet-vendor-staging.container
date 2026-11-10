@@ -1,5 +1,5 @@
 # Podman Quadlet: systemd generates dotnet-vendor-staging.service from this file (rootless, user svc-dotnet).
-# Change the tag on the Image= line in a merge request to release another version of the vendor's application.
+# 1.0.1: first staging, production follows after the check. Change the tag on the Image= line in a merge request to release another version of the vendor's application.
 [Unit]
 Description=dotnet-vendor (staging)
 Wants=network-online.target
