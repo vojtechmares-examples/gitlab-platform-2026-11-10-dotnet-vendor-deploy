@@ -1,0 +1,26 @@
+# Podman Quadlet: systemd generates dotnet-vendor-staging.service from this file (rootless, user svc-dotnet).
+# Change the tag on the Image= line in a merge request to release another version of the vendor's application.
+[Unit]
+Description=dotnet-vendor (staging)
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=registry.maresdemo.com/examples/dotnet-vendor:1.0.0
+ContainerName=dotnet-vendor-staging
+# Caddy (HTTPS) is the only client; the port is bound to loopback
+PublishPort=127.0.0.1:5111:8080
+Environment=ASPNETCORE_ENVIRONMENT=Staging
+# The pull uses ~/.config/containers/auth.json: read-only credentials for the vendor's registry, written by the
+# pipeline with "podman login --authfile" (the default location under $XDG_RUNTIME_DIR would not survive a reboot)
+ReadOnly=true
+NoNewPrivileges=true
+DropCapability=ALL
+
+[Service]
+Restart=always
+RestartSec=5
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target

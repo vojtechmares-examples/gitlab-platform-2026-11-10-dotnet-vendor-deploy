@@ -1,0 +1,12 @@
+# Who must approve a change to this repository before it can be merged. GitLab applies this together with the branch
+# protection of "main" ("Require approval from code owners") and the approval rules of the project.
+# [Section name][number of approvals needed]
+
+[Release owner][1]
+# Everything: the pipeline, the scripts, the Quadlet files
+* @vojtech.mares
+
+[Production][1]
+# What runs in production is decided by the release owner as well, and it is a section of its own so the
+# approval shows up as a separate requirement on the merge request
+/quadlet/production/ @vojtech.mares
