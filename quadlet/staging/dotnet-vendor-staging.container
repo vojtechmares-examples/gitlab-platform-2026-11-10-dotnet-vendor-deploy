@@ -6,7 +6,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Container]
-Image=registry.maresdemo.com/examples/dotnet-vendor:1.0.0
+Image=registry.maresdemo.com/examples/dotnet-vendor:1.0.1
 ContainerName=dotnet-vendor-staging
 # Caddy (HTTPS) is the only client; the port is bound to loopback
 PublishPort=127.0.0.1:5111:8080
